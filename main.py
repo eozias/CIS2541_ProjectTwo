@@ -3,11 +3,11 @@ from sklearn import datasets
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-from sklearn import neighbors, metrics
-from sklearn import naive_bayes
+from sklearn import metrics
 import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 from sklearn import svm
+import numpy as np
 
 def projectTwo():
     # step 1: load the Breast Cancer Wisconsin dataset
@@ -36,7 +36,13 @@ def projectTwo():
 
     corr_matrix = dataframe.corr()
     plt.title("Correlation Matrix")
+    plt.figsize = (60, 40)
     sns.heatmap(corr_matrix, annot=False, cmap="coolwarm")
+    xlabels = dataframe.columns
+    plt.xticks(ticks=np.arange(len(xlabels)), labels=xlabels, fontsize=8)
+    ylabels = dataframe.columns
+    plt.yticks(ticks=np.arange(len(ylabels)), labels=ylabels, fontsize=8)
+    plt.tight_layout()
     plt.show()
 
     # step 5: create a standard scaler to standardize the features
